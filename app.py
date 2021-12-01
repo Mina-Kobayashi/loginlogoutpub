@@ -10,7 +10,7 @@ from datetime import datetime
 
 
 app = Flask(__name__)
-app.secret_key = b'ppaegassemtsrif...'
+app.secret_key = b'.'
 
 
 engine = create_engine('postgresql:')
