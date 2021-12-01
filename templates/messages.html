@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Message
+{% endblock %}
+
+
+{% block content %}
+
+<div class="text-right h6">
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="alert alert-success p-5">
+    <h3 class="text-center fx-bold fs-2">{{ message }}</h3>
+</div>
+
+<!--切り替えタブ部分　-->
+<ul class="nav nav-tabs" role="tablist">
+    <!--一つ目のタブ message 部分-->
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" href="#msgs" data-bs-toggle="tab" role="tab" aria-controls="msgs"1>Messages</a>
+    </li>
+    <!-- second tab form part-->
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" href="#forms" data-bs-toggle="tab" role="tab" aria-controls="forms">Form</a>
+    </li>
+</ul>
+
+<!-- content part -->
+<div class="tab-content">
+    <!-- first content -->
+    <div class="tab-pane fade show active" id="msgs" role="tabpanel">
+        <h5 class="p-3 h5 text-center"> * Posted Messages * </h5>
+        <ul class="list-group list-group-flush">
+            {% for i in msgdatas | reverse %}
+            <li class="list-group-item">
+                {{ i.message }} 　　　　　　({{ i.sesid }}) ({{ i.date }})
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!--second content -->
+    <div class="tab-pane fade" id="forms" role="tabpanel">
+        <h5 class="mt-4">
+            Post your message:
+        </h5>
+        <div class="card mt-4">
+            <div class="card-body">
+                <form method="post" action="/">
+                <div class="form-group">
+                    <label for="comment">Message</label>
+                    <div class="row my-3">
+                        <input type="text" class="form-control col" id="comment" name="comment" maxlength='200' placeholder="※200文字までご記入頂けます。">
+                        <input class="btn btn-primary col-3 col-sm-3 col-md-2 col-lg-2 col-xl-2" type="submit" value="POST NOW!">
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}

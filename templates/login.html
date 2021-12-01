@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block headline %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if err %}
+<p class="alert alert-warning">
+{% else %}
+<p class="alert alert-light">
+{% endif %}
+{{ message }}</p>
+
+<div class="card">
+    <div class="card-header py-3">
+        <h2 class="card-title fw-bold fs-2">
+            Login form:
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <form method="post" action="/login">
+        <div class="form-group my-3">
+            <label for="id">id</label>
+            <input type="text" class="form-control my-3"  id="id" name="id" value="{{id}}">
+            <small class="form-text text-muted mt-3">
+                ※IDを入力（未登録の場合は新たに登録したいIDを記入
+            </small>
+        </div>
+        <div class="form-group my-3">
+            <label for="pass">password</label>
+            <input type="password" class="form-control my-3" id="pass" name="pass">
+            <small class="form-text text-muted mt-3">
+                ※パスワードを入力（未登録の場合は新たに登録したいパスワードを記入
+            </small>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-light" type="submit" value="Login">
+        </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+
+
+{% endblock %}
